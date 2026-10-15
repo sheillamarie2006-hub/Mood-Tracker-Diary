@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Petal — Mood Tracker & Diary</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<section class="auth-screen" id="authScreen" aria-label="Sign in to Petal">
+  <div class="auth-card">
+    <div class="auth-brand"><div class="auth-brand-mark">🌷</div><div><h1>petal <span style="color:#d96b9d">.</span></h1><p>your little corner of calm</p></div></div>
+    <p class="auth-eyebrow">A gentle moment for you</p>
+    <h2 id="authTitle">Welcome back 💗</h2>
+    <p class="auth-description" id="authDescription">Sign in to open your personal mood garden and diary. First time here? Create an account below.</p>
+    <form id="authForm" novalidate>
+      <div id="authNameWrap" hidden><label class="auth-field-label" for="authName">Your name</label><input class="field" id="authName" type="text" maxlength="50" autocomplete="name" placeholder="What should we call you?" /></div>
+      <label class="auth-field-label" for="authEmail">Email address</label>
+      <input class="field" id="authEmail" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required />
+      <label class="auth-field-label" for="authPassword">Password</label>
+      <input class="field" id="authPassword" type="password" minlength="6" autocomplete="current-password" placeholder="At least 6 characters" required />
+      <button class="auth-submit" id="authSubmit" type="submit">Sign in to Petal ♥</button>
+      <div class="auth-message" id="authMessage" role="status" aria-live="polite"></div>
+    </form>
+    <p class="auth-switch"><span id="authSwitchText">New to Petal?</span> <button id="authSwitch" type="button">Create an account</button></p>
+    <p class="auth-note">This school-project demo saves accounts and diary entries in this browser only. It is not a secure online authentication service.</p>
+  </div>
+</section>
+<div class="shell" id="appShell" style="display:none">
+  <header>
+    <div class="brand"><div class="brand-mark">🌷</div><div><h1>petal <span style="color:#d96b9d">.</span></h1><p>your little corner of calm</p></div></div>
+    <div class="header-actions">
+      <button class="profile-trigger" id="profileOpen" type="button" aria-haspopup="dialog"><span class="profile-mini" id="headerInitial">P</span><span id="headerUserName">My profile</span></button>
+      <div class="today-chip" id="todayChip">A gentle day to check in</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy"><p class="eyebrow">A moment for you</p><h2>How are you <span style="color:#b84e80">really</span> feeling?</h2><p>Every feeling deserves a little space. Check in with yourself, write it out, and notice the small patterns over time.</p></div>
+    <div class="hero-flower" aria-hidden="true">🌸</div>
+  </section>
+
+  <section class="stats" aria-label="Mood summary">
+    <div class="stat"><div class="stat-label">ENTRIES SAVED</div><div class="stat-value" id="totalEntries">0</div><div class="stat-note">little moments, kept</div></div>
+    <div class="stat"><div class="stat-label">MOST COMMON MOOD</div><div class="stat-value" id="commonMood">—</div><div class="stat-note" id="commonMoodNote">your mood story so far</div></div>
+    <div class="stat"><div class="stat-label">THIS WEEK</div><div class="stat-value" id="weekCount">0 days</div><div class="stat-note">days you checked in</div></div>
+  </section>
+
+  <main class="layout">
+    <section class="panel" id="entryPanel">
+      <div class="panel-head"><div><h3>Today's check-in ✨</h3><p class="panel-sub">Pause for a breath. Pick what feels closest.</p></div><span style="font-size:22px">🪷</span></div>
+      <form id="moodForm">
+        <span class="small-label" style="margin-top:0">1. Choose your mood</span>
+        <div class="moods" id="moodChoices" role="group" aria-label="Choose your mood">
+          <button class="mood-btn" type="button" data-mood="Awful" aria-pressed="false"><span class="mood-emoji">😢</span><span class="mood-name">Awful</span></button>
+          <button class="mood-btn" type="button" data-mood="Low" aria-pressed="false"><span class="mood-emoji">😕</span><span class="mood-name">Low</span></button>
+          <button class="mood-btn" type="button" data-mood="Okay" aria-pressed="false"><span class="mood-emoji">😐</span><span class="mood-name">Okay</span></button>
+          <button class="mood-btn" type="button" data-mood="Good" aria-pressed="false"><span class="mood-emoji">🙂</span><span class="mood-name">Good</span></button>
+          <button class="mood-btn" type="button" data-mood="Great" aria-pressed="false"><span class="mood-emoji">😄</span><span class="mood-name">Great</span></button>
+        </div>
+        <div class="form-row">
+          <div><label class="small-label" for="entryDate">2. Date</label><input class="field" id="entryDate" type="date" required /></div>
+          <div><label class="small-label" for="entryTitle">3. Give this day a title</label><input class="field" id="entryTitle" type="text" maxlength="60" placeholder="A small win today…" /></div>
+        </div>
+        <label class="small-label" for="entryNote">4. Write it out</label>
+        <textarea class="field" id="entryNote" maxlength="1500" placeholder="What happened today? What's on your mind? You can be honest here…"></textarea>
+        <div class="helper"><span id="charCount">0</span>/1500 characters · A few words or a whole page—it's up to you.</div>
+        <label class="small-label" for="entryTags">5. Add tags (optional)</label>
+        <input class="field" id="entryTags" type="text" maxlength="100" placeholder="e.g. school, family, self-care (separate with commas)" />
+        <div class="btn-row"><button class="btn btn-primary" type="submit" id="saveBtn">Save my check-in ♥</button><button class="btn btn-secondary" type="button" id="clearBtn">Clear</button></div>
+        <div class="privacy-note"><span>🔒</span><span><strong>Your diary stays in this browser.</strong> Entries are saved on this device using local storage. They are not uploaded to a server.</span></div>
+      </form>
+    </section>
+
+    <div class="right-stack">
+      <section class="panel">
+        <div class="panel-head"><div><h3>Your mood garden 🌱</h3><p class="panel-sub">A little look at your last 7 days.</p></div><span style="font-size:20px">📈</span></div>
+        <div class="chart-wrap"><canvas id="moodChart" role="img" aria-label="Mood chart for the last seven days"></canvas></div>
+        <div class="chart-legend"><span><i class="legend-dot" style="background:#d96b9d"></i>Daily mood</span><span style="margin-left:auto">Higher means a brighter mood</span></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><h3>Your diary 📖</h3><p class="panel-sub">Every check-in is part of your story.</p></div><span id="historyCount" class="tag">0 entries</span></div>
+        <div class="history-tools"><input class="field" id="searchEntries" type="search" placeholder="Search your notes…" aria-label="Search diary entries" /><select class="field" id="filterMood" aria-label="Filter by mood"><option value="all">All moods</option><option>Awful</option><option>Low</option><option>Okay</option><option>Good</option><option>Great</option></select></div>
+        <div class="history-list" id="historyList"></div>
+        <div class="history-foot"><span id="historyFootNote">Your saved entries will appear here.</span><div><button class="text-button" type="button" id="exportBtn">Export backup ↓</button><button class="text-button" type="button" id="importBtn">Import backup ↑</button><input id="importFile" type="file" accept="application/json,.json" hidden /></div></div>
+      </section>
+    </div>
+  </main>
+  <footer>Made with a little love and a reminder to be kind to yourself. 🌷<br>Petal is for journaling and reflection, not a medical or mental health diagnosis.</footer>
+</div>
+<div class="profile-overlay" id="profileOverlay" hidden>
+  <section class="profile-card" role="dialog" aria-modal="true" aria-labelledby="profileDialogTitle">
+    <div class="profile-top"><h2 id="profileDialogTitle">Your profile 🌷</h2><button class="profile-close" id="profileClose" type="button" aria-label="Close profile">×</button></div>
+    <div class="profile-person"><div class="profile-avatar" id="profileInitial">P</div><h3 id="profileName">Petal User</h3><p id="profileEmail">you@example.com</p></div>
+    <form id="profileForm">
+      <label class="auth-field-label" for="profileNameInput">Display name</label>
+      <input class="field" id="profileNameInput" type="text" maxlength="50" required />
+      <button class="btn btn-primary" style="width:100%;margin-top:10px" type="submit">Save profile</button>
+    </form>
+    <div class="profile-stat"><span>Your saved check-ins</span><strong id="profileEntryCount">0</strong></div>
+    <div class="profile-actions"><button class="btn btn-secondary" id="profileClose2" type="button">Back to diary</button><button class="btn btn-logout" id="logoutBtn" type="button">Log out ↗</button></div>
+    <p class="profile-hint">Logging out closes your session but does not delete your diary entries. Your profile is stored only on this device.</p>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
