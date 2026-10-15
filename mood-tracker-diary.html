@@ -79,15 +79,45 @@
   .toast.show{opacity:1;transform:translate(-50%,0)}
   .privacy-note{display:flex;align-items:flex-start;gap:8px;background:#f8f4fb;border-radius:12px;padding:11px 12px;margin-top:13px;color:#887992;font-size:10px;line-height:1.5}
   .privacy-note strong{color:#6b5878}
+  /* Sign-in and profile */
+  .auth-screen{min-height:100vh;display:grid;place-items:center;padding:26px 16px;background:radial-gradient(circle at 15% 10%,#f9e2ef 0,transparent 32%),radial-gradient(circle at 90% 85%,#eee4fb 0,transparent 34%),linear-gradient(135deg,#fff9fc,#fbf8ff 52%,#fffaf6)}
+  .auth-card{width:min(100%,460px);background:rgba(255,255,255,.94);border:1px solid #f0e2ed;border-radius:28px;padding:32px;box-shadow:0 24px 70px rgba(105,66,94,.13)}
+  .auth-brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}.auth-brand-mark{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:#f9e6ef;font-size:29px}.auth-brand h1{font-size:24px;letter-spacing:-.8px;margin:0}.auth-brand p{font-size:12px;color:var(--muted);margin:4px 0 0}
+  .auth-eyebrow{color:#a45d83;text-transform:uppercase;letter-spacing:2px;font-size:10px;font-weight:850;margin:0 0 9px}.auth-card h2{font-size:28px;letter-spacing:-1px;line-height:1.15;margin:0 0 8px}.auth-description{font-size:13px;color:#857889;line-height:1.6;margin:0 0 23px}.auth-field-label{display:block;font-size:12px;font-weight:800;color:#625567;margin:15px 0 8px}.auth-submit{margin-top:20px;width:100%;border:0;border-radius:13px;background:var(--pink);color:white;padding:14px 16px;font-weight:850;font-size:13px;box-shadow:0 8px 18px rgba(217,107,157,.2)}.auth-switch{font-size:12px;text-align:center;color:#8e8292;margin:20px 0 0}.auth-switch button{border:0;background:none;color:var(--pink-dark);font-weight:850;padding:3px}.auth-message{min-height:18px;font-size:11px;line-height:1.5;color:#b44d73;margin-top:10px}.auth-note{font-size:10px;line-height:1.5;color:#a294a5;margin-top:18px;text-align:center}
+  .header-actions{display:flex;align-items:center;gap:9px}.profile-trigger{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(255,255,255,.86);border-radius:999px;padding:7px 12px 7px 7px;color:#765d73;font-size:12px;font-weight:800;white-space:nowrap}.profile-mini{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#f5dbe9;color:#a04a78;font-size:11px;font-weight:900}
+  .profile-overlay{position:fixed;inset:0;z-index:20;background:rgba(49,35,50,.28);backdrop-filter:blur(5px);display:grid;place-items:center;padding:18px}.profile-overlay[hidden]{display:none}.profile-card{width:min(100%,430px);border:1px solid #f0e2ed;border-radius:25px;background:#fffdfd;padding:26px;box-shadow:0 25px 80px rgba(53,35,52,.2)}.profile-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.profile-top h2{font-size:18px;margin:0}.profile-close{border:0;border-radius:10px;background:#f8eff5;color:#8d7187;width:34px;height:34px;font-size:20px}.profile-person{text-align:center;padding:16px 0 20px}.profile-avatar{width:76px;height:76px;margin:0 auto 12px;border-radius:25px;display:grid;place-items:center;background:linear-gradient(135deg,#f8dce9,#eae0fa);color:#97577a;font-size:27px;font-weight:900}.profile-person h3{font-size:20px;margin:0 0 5px}.profile-person p{font-size:12px;color:var(--muted);margin:0;overflow-wrap:anywhere}.profile-stat{border:1px solid #f0e6ef;border-radius:14px;background:#fff9fc;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#86788a;margin:6px 0 17px}.profile-stat strong{font-size:18px;color:#493e4e}.profile-actions{display:flex;gap:9px;margin-top:17px}.profile-actions .btn{flex:1}.btn-logout{background:#f8e9ef;color:#a33f6d}.profile-hint{font-size:10px;line-height:1.5;color:#a094a2;margin:13px 0 0}
+  @media(max-width:530px){.auth-card{padding:24px 20px;border-radius:22px}.auth-card h2{font-size:25px}.header-actions{gap:6px;flex-direction:column-reverse;align-items:flex-end}.profile-trigger{font-size:10px;padding-right:9px}.today-chip{font-size:10px;padding:7px 9px}}
   @media(max-width:850px){.layout{grid-template-columns:1fr}.hero{padding:26px}.hero-flower{font-size:58px}.right-stack{display:contents}.layout>.right-stack{margin-top:0}.stats{gap:9px}.stat{padding:14px}}
   @media(max-width:530px){.shell{padding:18px 12px 38px}.brand-mark{width:42px;height:42px}.brand h1{font-size:19px}.today-chip{font-size:10px;padding:9px}.hero{border-radius:21px;padding:24px 20px}.hero-flower{display:none}.hero h2{font-size:29px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.stat-value{font-size:22px}.panel{padding:17px;border-radius:18px}.moods{gap:5px}.mood-btn{min-height:83px;border-radius:12px}.mood-emoji{font-size:25px}.mood-name{font-size:9px}.form-row{grid-template-columns:1fr}.history-tools{flex-direction:column}.history-foot{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<div class="shell">
+<section class="auth-screen" id="authScreen" aria-label="Sign in to Petal">
+  <div class="auth-card">
+    <div class="auth-brand"><div class="auth-brand-mark">🌷</div><div><h1>petal <span style="color:#d96b9d">.</span></h1><p>your little corner of calm</p></div></div>
+    <p class="auth-eyebrow">A gentle moment for you</p>
+    <h2 id="authTitle">Welcome back 💗</h2>
+    <p class="auth-description" id="authDescription">Sign in to open your personal mood garden and diary.</p>
+    <form id="authForm" novalidate>
+      <div id="authNameWrap" hidden><label class="auth-field-label" for="authName">Your name</label><input class="field" id="authName" type="text" maxlength="50" autocomplete="name" placeholder="What should we call you?" /></div>
+      <label class="auth-field-label" for="authEmail">Email address</label>
+      <input class="field" id="authEmail" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required />
+      <label class="auth-field-label" for="authPassword">Password</label>
+      <input class="field" id="authPassword" type="password" minlength="6" autocomplete="current-password" placeholder="At least 6 characters" required />
+      <button class="auth-submit" id="authSubmit" type="submit">Sign in to Petal ♥</button>
+      <div class="auth-message" id="authMessage" role="status" aria-live="polite"></div>
+    </form>
+    <p class="auth-switch"><span id="authSwitchText">New to Petal?</span> <button id="authSwitch" type="button">Create an account</button></p>
+    <p class="auth-note">This school-project demo saves accounts and diary entries in this browser only. It is not a secure online authentication service.</p>
+  </div>
+</section>
+<div class="shell" id="appShell" style="display:none">
   <header>
     <div class="brand"><div class="brand-mark">🌷</div><div><h1>petal <span style="color:#d96b9d">.</span></h1><p>your little corner of calm</p></div></div>
-    <div class="today-chip" id="todayChip">A gentle day to check in</div>
+    <div class="header-actions">
+      <button class="profile-trigger" id="profileOpen" type="button" aria-haspopup="dialog"><span class="profile-mini" id="headerInitial">P</span><span id="headerUserName">My profile</span></button>
+      <div class="today-chip" id="todayChip">A gentle day to check in</div>
+    </div>
   </header>
 
   <section class="hero">
@@ -144,10 +174,27 @@
   </main>
   <footer>Made with a little love and a reminder to be kind to yourself. 🌷<br>Petal is for journaling and reflection, not a medical or mental health diagnosis.</footer>
 </div>
+<div class="profile-overlay" id="profileOverlay" hidden>
+  <section class="profile-card" role="dialog" aria-modal="true" aria-labelledby="profileDialogTitle">
+    <div class="profile-top"><h2 id="profileDialogTitle">Your profile 🌷</h2><button class="profile-close" id="profileClose" type="button" aria-label="Close profile">×</button></div>
+    <div class="profile-person"><div class="profile-avatar" id="profileInitial">P</div><h3 id="profileName">Petal User</h3><p id="profileEmail">you@example.com</p></div>
+    <form id="profileForm">
+      <label class="auth-field-label" for="profileNameInput">Display name</label>
+      <input class="field" id="profileNameInput" type="text" maxlength="50" required />
+      <button class="btn btn-primary" style="width:100%;margin-top:10px" type="submit">Save profile</button>
+    </form>
+    <div class="profile-stat"><span>Your saved check-ins</span><strong id="profileEntryCount">0</strong></div>
+    <div class="profile-actions"><button class="btn btn-secondary" id="profileClose2" type="button">Back to diary</button><button class="btn btn-logout" id="logoutBtn" type="button">Log out ↗</button></div>
+    <p class="profile-hint">Logging out closes your session but does not delete your diary entries. Your profile is stored only on this device.</p>
+  </section>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (() => {
   const STORAGE_KEY = 'petalMoodDiary_v1';
+  const ACCOUNTS_KEY = 'petalAccounts_v1';
+  const SESSION_KEY = 'petalSession_v1';
+  let currentUser = null;
   const MOODS = {
     Awful: { emoji: '😢', score: 1, color: '#9f8cce' },
     Low:   { emoji: '😕', score: 2, color: '#b5a1db' },
@@ -155,7 +202,7 @@
     Good:  { emoji: '🙂', score: 4, color: '#e38eb5' },
     Great: { emoji: '😄', score: 5, color: '#d96b9d' }
   };
-  let entries = loadEntries();
+  let entries = [];
   let selectedMood = '';
   let editingId = null;
   let toastTimer;
@@ -174,7 +221,14 @@
 
   function loadEntries() {
     try {
-      const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const userKey = currentUser ? `${STORAGE_KEY}:${encodeURIComponent(currentUser.email)}` : STORAGE_KEY;
+      let stored = localStorage.getItem(userKey);
+      // Migrate diary entries created by an older version into the first account that signs in.
+      if (stored === null && currentUser) {
+        const legacy = localStorage.getItem(STORAGE_KEY);
+        if (legacy !== null) { stored = legacy; localStorage.setItem(userKey, legacy); localStorage.removeItem(STORAGE_KEY); }
+      }
+      const value = JSON.parse(stored || '[]');
       if (!Array.isArray(value)) return [];
       return value.filter(e => e && typeof e.id === 'string' && MOODS[e.mood] && /^\d{4}-\d{2}-\d{2}$/.test(e.date)).map(e => ({
         id:e.id, date:e.date, mood:e.mood, title:String(e.title || ''), note:String(e.note || ''),
@@ -184,7 +238,11 @@
     } catch { return []; }
   }
   function persist() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); return true; }
+    try {
+      if (!currentUser) { showToast('Please sign in before saving your diary.'); return false; }
+      const userKey = `${STORAGE_KEY}:${encodeURIComponent(currentUser.email)}`;
+      localStorage.setItem(userKey, JSON.stringify(entries)); return true;
+    }
     catch { showToast('Could not save. Your browser storage may be full or disabled.'); return false; }
   }
   function showToast(message) {
@@ -267,6 +325,121 @@
   function renderAll(){summarize();renderHistory();renderChart();}
 
   document.querySelectorAll('.mood-btn').forEach(btn => btn.addEventListener('click',()=>selectMood(btn.dataset.mood)));
+  let authMode = 'login';
+  const readAccounts = () => {
+    try { const list = JSON.parse(localStorage.getItem(ACCOUNTS_KEY) || '[]'); return Array.isArray(list) ? list : []; }
+    catch { return []; }
+  };
+  const writeAccounts = list => localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(list));
+  async function hashPassword(password) {
+    // Hash the demo password before storing it. Client-only authentication is still not production security.
+    try {
+      if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+        const bytes = new TextEncoder().encode(password);
+        const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+        return 'sha256:' + Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+    } catch {}
+    // Fallback for browsers without Web Crypto; use Live Server for the best compatibility.
+    return 'demo:' + btoa(unescape(encodeURIComponent(password)));
+  }
+  function setAuthMode(mode) {
+    authMode = mode;
+    const creating = mode === 'register';
+    $('authTitle').textContent = creating ? 'Create your little space 🌷' : 'Welcome back 💗';
+    $('authDescription').textContent = creating ? 'Create a profile to keep your moods and journal entries together.' : 'Sign in to open your personal mood garden and diary.';
+    $('authNameWrap').hidden = !creating;
+    $('authName').required = creating;
+    $('authPassword').autocomplete = creating ? 'new-password' : 'current-password';
+    $('authSubmit').textContent = creating ? 'Create my account ♥' : 'Sign in to Petal ♥';
+    $('authSwitchText').textContent = creating ? 'Already have an account?' : 'New to Petal?';
+    $('authSwitch').textContent = creating ? 'Sign in' : 'Create an account';
+    $('authMessage').textContent = '';
+  }
+  function showApp(user) {
+    currentUser = user;
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify({ email: user.email }));
+    entries = loadEntries();
+    $('authScreen').style.display = 'none';
+    $('appShell').style.display = 'block';
+    $('headerUserName').textContent = user.name;
+    $('headerInitial').textContent = initials(user.name);
+    updateProfileView();
+    renderAll();
+  }
+  function initials(name) {
+    return String(name || 'P').trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase() || 'P';
+  }
+  function updateProfileView() {
+    if (!currentUser) return;
+    $('profileName').textContent = currentUser.name;
+    $('profileEmail').textContent = currentUser.email;
+    $('profileInitial').textContent = initials(currentUser.name);
+    $('profileNameInput').value = currentUser.name;
+    $('profileEntryCount').textContent = entries.length;
+    $('headerUserName').textContent = currentUser.name;
+    $('headerInitial').textContent = initials(currentUser.name);
+  }
+  function openProfile() { updateProfileView(); $('profileOverlay').hidden = false; $('profileNameInput').focus(); }
+  function closeProfile() { $('profileOverlay').hidden = true; }
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    // Clear any unsaved form text before another account can open this page.
+    resetForm(); $('searchEntries').value = ''; $('filterMood').value = 'all';
+    currentUser = null; entries = []; editingId = null; selectedMood = '';
+    closeProfile(); $('appShell').style.display = 'none'; $('authScreen').style.display = 'grid';
+    $('authForm').reset(); $('authEmail').value = ''; $('authPassword').value = ''; setAuthMode('login');
+    $('authMessage').textContent = 'You have logged out. Sign in again whenever you are ready.';
+  }
+  $('authSwitch').addEventListener('click', () => setAuthMode(authMode === 'login' ? 'register' : 'login'));
+  $('authForm').addEventListener('submit', async event => {
+    event.preventDefault();
+    const email = $('authEmail').value.trim().toLowerCase();
+    const password = $('authPassword').value;
+    const name = $('authName').value.trim();
+    const accounts = readAccounts();
+    const existing = accounts.find(account => account.email === email);
+    $('authMessage').textContent = '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { $('authMessage').textContent = 'Please enter a valid email address.'; return; }
+    if (password.length < 6) { $('authMessage').textContent = 'Your password must be at least 6 characters.'; return; }
+    if (authMode === 'register') {
+      if (name.length < 2) { $('authMessage').textContent = 'Please enter your name (at least 2 characters).'; return; }
+      if (existing) { $('authMessage').textContent = 'An account with this email already exists. Please sign in.'; return; }
+      try {
+        const account = { name, email, passwordHash: await hashPassword(password), createdAt: new Date().toISOString() };
+        accounts.push(account); writeAccounts(accounts); $('authForm').reset(); showApp(account);
+      } catch { $('authMessage').textContent = 'Could not create your account. Browser storage may be disabled.'; }
+    } else {
+      if (!existing) { $('authMessage').textContent = 'No account was found for that email. Create an account first.'; return; }
+      const passwordHash = await hashPassword(password);
+      if (existing.passwordHash !== passwordHash) { $('authMessage').textContent = 'That password does not match. Please try again.'; return; }
+      $('authForm').reset(); showApp(existing);
+    }
+  });
+  $('profileOpen').addEventListener('click', openProfile);
+  $('profileClose').addEventListener('click', closeProfile);
+  $('profileClose2').addEventListener('click', closeProfile);
+  $('profileOverlay').addEventListener('click', event => { if (event.target === $('profileOverlay')) closeProfile(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeProfile(); });
+  $('logoutBtn').addEventListener('click', logout);
+  $('profileForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const newName = $('profileNameInput').value.trim();
+    if (newName.length < 2) { showToast('Please enter a name with at least 2 characters.'); return; }
+    const accounts = readAccounts();
+    const index = accounts.findIndex(account => account.email === currentUser.email);
+    if (index < 0) { showToast('Could not find your account. Please sign in again.'); return; }
+    accounts[index].name = newName;
+    try { writeAccounts(accounts); currentUser = accounts[index]; updateProfileView(); showToast('Your profile has been updated 🌷'); }
+    catch { showToast('Could not save profile changes.'); }
+  });
+  // Restore a session only in this browser tab/session. Otherwise, start at sign-in.
+  try {
+    const session = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+    const account = session && readAccounts().find(item => item.email === session.email);
+    if (account) showApp(account); else { sessionStorage.removeItem(SESSION_KEY); setAuthMode('login'); }
+  } catch { setAuthMode('login'); }
+
   $('entryDate').value = todayLocal();
   $('todayChip').textContent = new Date().toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});
   $('entryNote').addEventListener('input',()=> $('charCount').textContent = $('entryNote').value.length);
@@ -315,8 +488,7 @@
     finally{event.target.value='';}
   });
   window.addEventListener('resize',renderChart);
-  if(!('localStorage' in window))showToast('Browser storage is unavailable; entries may not be saved.');
-  renderAll();
+  if(!('localStorage' in window)) { $('authMessage').textContent = 'Browser storage is unavailable; accounts and entries may not be saved.'; }
 })();
 </script>
 </body>
